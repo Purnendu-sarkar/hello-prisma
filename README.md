@@ -97,3 +97,27 @@ const updateProfilePhoto = await prisma.user.updateManyAndReturn({
 ```
 
 ---
+
+## **9. Delete**
+
+```ts
+const deletedUser = await prisma.user.delete({
+  where: { id: 1 },
+});
+```
+
+Deletes a single user by unique field and returns the deleted object.
+
+---
+
+## **10. Delete Many**
+
+```ts
+const result = await prisma.user.deleteMany({
+  where: { id: { lt: 3 } },
+});
+```
+
+Deletes multiple users matching the filter. Returns the count of deleted rows.
+
+---

@@ -40,19 +40,33 @@ async function main() {
   //   console.error("Error finding user by email:", error);
   // }
 
-  // 5. Update a single user by ID
-  const updatedUser = await prisma.user.update({
-    where: { id: 1 },
-    data: { name: "Purnendu Sarkar" }
-  });
-  console.log("✏️ Updated User:", updatedUser);
+  // // 5. Update a single user by ID
+  // const updatedUser = await prisma.user.update({
+  //   where: { id: 1 },
+  //   data: { name: "Purnendu Sarkar" }
+  // });
+  // console.log("✏️ Updated User:", updatedUser);
 
-  // 6. Update multiple users by condition
-  const updatedMany = await prisma.user.updateMany({
-    where: { id: { gt: 1 } },
-    data: { profilePhoto: "https://example.com/default.jpg" }
+  // // 6. Update multiple users by condition
+  // const updatedMany = await prisma.user.updateMany({
+  //   where: { id: { gt: 1 } },
+  //   data: { profilePhoto: "https://example.com/default.jpg" }
+  // });
+  // console.log("📌 Updated Multiple Users:", updatedMany);
+
+  // 7. Delete a single user by ID
+  const deletedUser = await prisma.user.delete({
+    where: { id: 7 }
   });
-  console.log("📌 Updated Multiple Users:", updatedMany);
+  console.log("🗑️ Deleted User:", deletedUser);
+
+  // 8. Delete multiple users by condition
+  const deletedMany = await prisma.user.deleteMany({
+    where: { id: { lt: 3 } }
+  });
+  console.log("🗑️ Deleted Multiple Users:", deletedMany);
+
+
 
 
   console.log("🌱 Seeding finished.");
