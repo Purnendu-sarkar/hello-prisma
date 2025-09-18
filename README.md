@@ -54,3 +54,46 @@ const user = await prisma.user.findUniqueOrThrow({
 Retrieves a single user by a unique field. Throws an error if the user does not exist.
 
 ---
+
+## **6. Update**
+
+```ts
+const updatedUser = await prisma.user.update({
+  where: { id: 1 },
+  data: { name: "Purnendu Sarkar" },
+});
+```
+
+Updates a single user and returns the updated object.
+
+---
+
+## **7. Update Many**
+
+```ts
+const result = await prisma.user.updateMany({
+  where: { id: { gt: 1 } },
+  data: { profilePhoto: "https://example.com/default.jpg" },
+});
+```
+
+Updates multiple users matching the filter. Returns the count of updated rows.
+
+---
+
+## **8. Update Many and Return**
+
+```ts
+const updateProfilePhoto = await prisma.user.updateManyAndReturn({
+  where: {
+    id: {
+      gt: 2,
+    },
+  },
+  data: {
+    profilePhoto: "https://example.com/default.jpg",
+  },
+});
+```
+
+---
