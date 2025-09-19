@@ -21,7 +21,24 @@ Inserts a single user into the database and returns the created object.
 
 ---
 
-## **2. Find Many**
+## **2. Create Many**
+
+```ts
+const users = await prisma.user.createMany({
+  data: [
+    { name: "Mir", email: "mir@ph.com" },
+    { name: "Tanmoy", email: "tanmoy@ph.com" },
+    { name: "Mizan", email: "mizan@ph.com" },
+    { name: "Imun", email: "imun@ph.com" },
+  ],
+});
+```
+
+Inserts multiple users at once. Returns a count of inserted rows.
+
+---
+
+## **3. Find Many**
 
 ```ts
 const users = await prisma.user.findMany();
@@ -31,7 +48,7 @@ Retrieves multiple users as an array. Supports filtering, ordering, and case-ins
 
 ---
 
-## **3. Find Unique**
+## **4. Find Unique**
 
 ```ts
 const user = await prisma.user.findUnique({
@@ -43,7 +60,7 @@ Retrieves a single user by a unique field (e.g., `id` or `email`). Returns `null
 
 ---
 
-## **4. Find Unique Or Throw**
+## **5. Find Unique Or Throw**
 
 ```ts
 const user = await prisma.user.findUniqueOrThrow({
@@ -121,3 +138,39 @@ const result = await prisma.user.deleteMany({
 Deletes multiple users matching the filter. Returns the count of deleted rows.
 
 ---
+
+## **11. Order By**
+
+```ts
+const users = await prisma.user.findMany({
+  orderBy: { createdAt: "desc" },
+});
+```
+
+Sorts the results based on a field in ascending (`asc`) or descending (`desc`) order.
+
+---
+
+## **12. Contains (with case-insensitive mode)**
+
+```ts
+const users = await prisma.user.findMany({
+  where: {
+    name: { contains: "john", mode: "insensitive" },
+  },
+});
+```
+
+Performs a substring search in a string field with optional case-insensitivity.
+
+---
+
+> This guide follows the exact order of Prisma queries used in the `hello-prisma` repository, making it easy to understand and practice CRUD operations with PostgreSQL.
+
+---
+
+### **Documentations**
+
+- [Prisma Official Website](https://www.prisma.io/)
+- [Prisma Setup Guide (TypeScript + PostgreSQL)](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgresql)
+- [Prisma Client CRUD Queries](https://www.prisma.io/docs/orm/prisma-client/queries/crud)
