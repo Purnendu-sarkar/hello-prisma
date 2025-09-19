@@ -55,16 +55,16 @@ async function main() {
   // console.log("📌 Updated Multiple Users:", updatedMany);
 
   // 7. Delete a single user by ID
-  const deletedUser = await prisma.user.delete({
-    where: { id: 7 }
-  });
-  console.log("🗑️ Deleted User:", deletedUser);
+  // const deletedUser = await prisma.user.delete({
+  //   where: { id: 7 }
+  // });
+  // console.log("🗑️ Deleted User:", deletedUser);
 
-  // 8. Delete multiple users by condition
-  const deletedMany = await prisma.user.deleteMany({
-    where: { id: { lt: 3 } }
-  });
-  console.log("🗑️ Deleted Multiple Users:", deletedMany);
+  // // 8. Delete multiple users by condition
+  // const deletedMany = await prisma.user.deleteMany({
+  //   where: { id: { lt: 3 } }
+  // });
+  // console.log("🗑️ Deleted Multiple Users:", deletedMany);
 
 
 
